@@ -1,8 +1,8 @@
 <script>
     module.exports = {
+        props:['location'],
         data: () => {
             return {
-                name: 'location'
             }
         }
     }
@@ -10,9 +10,20 @@
 
 <template>
     <div class="location-container">
-        {{ name }}
+        <button type="button"  class="btn btn-primary location-button">
+            {{ location.name }}
+        </button>
     </div>
 </template>
 
-<style lang="">
+<style lang="sass">
+    .location-container{
+        border: 1px dashed red;
+        text-align: center;
+
+        .location-button{
+            width: 100%;
+            height: 100%;
+        }
+    }
 </style>

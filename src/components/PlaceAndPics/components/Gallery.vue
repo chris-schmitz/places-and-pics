@@ -16,5 +16,9 @@
     </div>
 </template>
 
-<style lang="">
+<style lang="sass">
+    .gallery-container{
+                border: 1px dashed red;
+
+    }
 </style>

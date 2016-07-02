@@ -1,9 +1,9 @@
 <script>
-    // import Dropzone from './components/Dropzone.vue'
-    // import Gallery from './components/Gallery.vue'
-    // import Location from './components/Location.vue'
+    import Dropzone from './Dropzone.vue'
+    import Gallery from './Gallery.vue'
 
     module.exports = {
+        components: { Dropzone, Gallery},
         data: () => {
             return { name: 'info'}
         }
@@ -12,9 +12,13 @@
 
 <template>
     <div class="info-container">
-        {{ name }}
+        <gallery></gallery>
+        <dropzone></dropzone>
     </div>
 </template>
 
-<style lang="">
+<style lang="sass">
+    .info-container{
+        border: 1px dashed red;
+    }
 </style>
