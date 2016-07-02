@@ -1,0 +1,17 @@
+$color1: #D800E5;
+$color2: #010B3A;
+$color3: #2300F5;
+$color4: #FB0026;
+$color5: #B34D30;
+$color6: #FBFEFB;
+
+
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+@import "~animate.css/animate.min.css";
+@import "~font-awesome/css/font-awesome.min.css";
+
+body{
+    background-color:$color2;
+    color: $color6;
+}
