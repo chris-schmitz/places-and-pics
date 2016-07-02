@@ -1,4 +1,6 @@
 <script>
+    // import Image from './components/Image.vue'
+
     module.exports = {
         data: () => {
             return {

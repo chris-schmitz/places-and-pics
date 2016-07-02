@@ -1,14 +1,10 @@
 <script>
     require('./style/main.scss')
-    import Dropzone from './components/Dropzone.vue'
-    import Gallery from './components/Gallery.vue'
-    import Location from './components/Location.vue'
     import Locations from './components/Locations.vue'
     import Map from './components/Map.vue'
-    import Image from './components/Image.vue'
 
     module.exports = {
-        components:{Dropzone, Gallery, 'pp-image':Image, Location, Locations, Map},
+        components:{Locations, Map},
         data: () => {
             return {
                 msg: 'placeandpics root'
@@ -18,17 +14,50 @@
 </script>
 
 <template>
-    <div class="place-and-pics-container">
-        <ul>
-            <li><dropzone></dropzone></li>
-            <li><gallery></gallery></li>
-            <li><location></location></li>
-            <li><locations></locations></li>
-            <li><pp-image></pp-image></li>
-            <li><map></map></li>
-        </ul>
+    <div class="place-and-pics-container container">
+        <div class="panel panel-primary">
+            <div class="panel-heading"><h2>Places and Pics</h2></div>
+            <div class="panel-body">
+                <locations></locations>
+                <map></map>
+            </div>
+        </div>
+        <div class="well">
+            <ul>
+                <li><locations></locations></li>
+                <li><map></map></li>
+            </ul>
+        </div>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                test
+            </div>
+        </div>
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                test
+            </div>
+        </div>
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                test
+            </div>
+        </div>
+        <div class="panel panel-danger">
+            <div class="panel-heading">
+                test
+            </div>
+        </div>
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                test
+            </div>
+        </div>
     </div>
 </template>
 
-<style lang="">
+<style lang="sass">
+    .place-and-pics-container{
+        margin-top:40px;
+    }
 </style>
