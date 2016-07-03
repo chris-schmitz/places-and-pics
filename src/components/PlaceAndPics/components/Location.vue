@@ -1,8 +1,11 @@
 <script>
+    import state from '../state/state.js'
+
     module.exports = {
         props:['location'],
         data: () => {
             return {
+                dev: state.dev
             }
         }
     }
@@ -10,7 +13,7 @@
 
 <template>
     <div class="location-container">
-        <button type="button"  class="btn btn-primary location-button">
+        <button type="button" :class="{'outline-edges': this.dev.showEdges}"  class="btn btn-primary location-button">
             {{ location.name }}
         </button>
     </div>
@@ -18,7 +21,6 @@
 
 <style lang="sass">
     .location-container{
-        border: 1px dashed red;
         text-align: center;
 
         .location-button{

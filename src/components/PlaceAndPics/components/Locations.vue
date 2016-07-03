@@ -6,7 +6,7 @@
         components:{ Location },
         data: () => {
             return {
-                name: 'locations',
+                dev: State.dev,
                 locations: State.locations
             }
         }
@@ -14,7 +14,7 @@
 </script>
 
 <template>
-    <div class="locations-container">
+    <div class="locations-container" :class="{'outline-edges': this.dev.showEdges}">
         <div v-for="location in locations" class="location-block">
             <location :location="location"></location>
         </div>
@@ -23,12 +23,11 @@
 
 <style lang="sass">
     .locations-container{
-        border: 1px dashed red;
         display:flex;
         flex-direction:column;
 
+
         .location-block{
-            flex:1;
             margin: 5px;
         }
     }

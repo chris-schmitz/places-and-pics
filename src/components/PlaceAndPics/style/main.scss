@@ -13,6 +13,27 @@ $icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
 @import "~animate.css/animate.min.css";
 @import "~font-awesome/css/font-awesome.min.css";
 
+
+// review file: /Users/cschmitz/Development/CS/WebCode/Demos/Vue/places-and-pics/node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins/_buttons.scss
+// to finish fleshing out the extension of this button.
+.btn-dark{
+    @extend .btn-success;
+    background-color:$color5;
+    border-color: darken($color5, 7%);
+    &:hover {
+    color: $color6;
+    background-color: darken($color5, 10%);
+        border-color: darken($color5, 12%);
+    }
+  &:active,
+  &.active,
+  .open > &.dropdown-toggle {
+    color: $color6;
+    background-color: darken($color5, 10%);
+        border-color: darken($color5, 12%);
+    }
+}
+
 body{
     background-color:$color2;
     color: $color2;

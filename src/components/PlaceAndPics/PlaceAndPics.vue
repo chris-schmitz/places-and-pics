@@ -32,6 +32,7 @@
         .panel-body{
             display:flex;
             flex-direction: row;
+            flex-wrap: wrap;
         }
     }
     .left-column{
@@ -40,4 +41,8 @@
     .right-column{
         flex: 3;
     }
+    .outline-edges{
+        border: 1px dashed blue !important;
+    }
+
 </style>
