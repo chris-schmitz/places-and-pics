@@ -1,19 +1,16 @@
 <script>
     module.exports = {
+        props:['image'],
         data: () => {
             return {
-                name: 'image'
             }
-        },
-        ready: () => {
-            console.log('image ready')
         }
     }
 </script>
 
 <template>
     <div class="image-container">
-        {{ name }}
+        <img :src="image.src">
     </div>
 </template>
 

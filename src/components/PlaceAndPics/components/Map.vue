@@ -67,7 +67,7 @@
 
         .map{
             margin: 5px;
-            height:500px;
+            height:100%;
             flex: 1;
             text-align: center;
             display:flex;

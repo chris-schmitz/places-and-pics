@@ -1,24 +1,23 @@
 <script>
-    // import Image from './components/Image.vue'
+    import GalleryImage from './Image.vue'
 
     module.exports = {
-        data: () => {
-            return {
-                name: 'gallery'
-            }
-        }
+        props:['location'],
+        components:{GalleryImage},
     }
 </script>
 
 <template>
     <div class="gallery-container">
-        {{ name }}
+        <gallery-image v-for="image in location.images" :image="image"></gallery-image>
     </div>
 </template>
 
 <style lang="sass">
     .gallery-container{
-                border: 1px dashed red;
-
+        height:100%;
+        background-color: green;
+        overlfow-y: scroll;
+        overflow-x: hidden;
     }
 </style>

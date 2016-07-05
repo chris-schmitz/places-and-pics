@@ -22,4 +22,8 @@
     body {
         font-family: Helvetica, sans-serif;
     }
+    .app-container{
+        height:98%;
+        min-height:98%;
+    }
 </style>

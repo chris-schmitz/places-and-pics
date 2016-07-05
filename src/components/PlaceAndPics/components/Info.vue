@@ -42,7 +42,7 @@
         </div>
         <div class="content">
             <div class="gallery-block">
-                <gallery></gallery>
+                <gallery :location="location"></gallery>
             </div>
             <div class="dropzone-block">
                 <!-- <button class="btn btn-dark" @click="onInfoWindowButtonClick">clickme</button> -->
@@ -54,21 +54,23 @@
 
 <style lang="sass">
     .info-container{
-        border: 1px dashed red;
         display: flex;
         flex-direction: column;
-        width: 400px;
-        height: 200px;
+        width: 600px;
+        height: 500px;
 
         .content{
             display: flex;
             flex-direction: row;
+            flex:1;
 
             .gallery-block{
-                flex: 3;
+                flex: 2;
+                align-items:stretch;
             }
             .dropzone-block{
                 flex: 1;
+                align-items:stretch;
             }
         }
     }

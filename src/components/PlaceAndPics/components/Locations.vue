@@ -25,7 +25,7 @@
     .locations-container{
         display:flex;
         flex-direction:column;
-
+        justify-content: stretch;
 
         .location-block{
             margin: 5px;
