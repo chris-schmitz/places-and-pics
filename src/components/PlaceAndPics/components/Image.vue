@@ -14,5 +14,10 @@
     </div>
 </template>
 
-<style lang="">
+<style lang="sass">
+    .image-container{
+        img{
+            width: 300px;
+        }
+    }
 </style>

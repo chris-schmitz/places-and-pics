@@ -4,6 +4,8 @@
     module.exports = {
         props:['location'],
         components:{GalleryImage},
+        ready: function (){
+        }
     }
 </script>
 
@@ -16,7 +18,6 @@
 <style lang="sass">
     .gallery-container{
         height:100%;
-        background-color: green;
         overlfow-y: scroll;
         overflow-x: hidden;
     }

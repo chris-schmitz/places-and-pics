@@ -1,8 +1,13 @@
+let fs = require('fs')
+let path = require('path')
 let express = require('express')
 let app = express()
-// note that setting this means the public directory will be accessible as the web root
-// and the index.html file will be loaded directly, i.e. there's no need for an
-// app.get('/',...) route
+let http = require('http').Server(app)
+let io = require('socket.io')(http)
+let webroot = path.resolve(__dirname, '../public')
+let multer = require('multer')
+let upload = multer({dest: 'public/images/'})
+
 app.use(express.static('public'))
 let PORT = 3000
 
@@ -11,6 +16,18 @@ let MongoClient = require('mongodb').MongoClient
 let assert = require('assert')
 let url = 'mongodb://localhost:27017/placesandpics'
 let co = require('co')
+
+
+app.get('/', (req,res) => {
+    res.sendFile(`${webroot}/app.html`)
+})
+
+io.on('connection', (socket) => {
+    console.log('Socket.io user connected')
+    socket.on('newimage', function (msg){
+        io.emit('newimageadded', msg)
+    })
+})
 
 app.post('/inserttestdata', (req,res) => {
     co(function*(){
@@ -41,10 +58,15 @@ app.get('/locations', (req, res) => {
 
 })
 
-app.post('/images', (req, res) => {
-    res.json({ test: "worked"})
+app.post('/images', upload.single('file'), (req, res) => {
+    // for the given location, store the image
+    // send image to gallery via socket.io
+    let path = `images/${req.file.filename}`
+    io.emit('newimage', { path: path, locationId: req.body.locationId})
+    res.json({status: 'uploaded'})
 })
 
-app.listen(PORT, () => {
+
+http.listen(PORT, () => {
     console.log(`Listening on port: ${PORT}`)
 })

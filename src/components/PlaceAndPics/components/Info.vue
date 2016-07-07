@@ -46,7 +46,7 @@
             </div>
             <div class="dropzone-block">
                 <!-- <button class="btn btn-dark" @click="onInfoWindowButtonClick">clickme</button> -->
-                <dropzone></dropzone>
+                <dropzone :location="location"></dropzone>
             </div>
         </div>
     </div>

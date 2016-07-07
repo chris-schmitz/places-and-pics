@@ -3,6 +3,7 @@
     Dropzone.autoDiscover = false
 
     module.exports = {
+        props:['location'],
         data: () => {
             return {
                 dropzone: null
@@ -21,13 +22,19 @@
                 // thumbnailWidth: '100',
                 // thumbnailHeight: null
             })
+            this.dropzone.on('sending', this.attachMetaData)
+        },
+        methods:{
+            attachMetaData: function (file, xhr, formData){
+                formData.append('locationId', this.location._id)
+            }
         }
     }
 </script>
 
 <template>
-    <div id="{{dropzoneId}}" class="dropzone-container dropzone">
-    </div>
+    <form id="{{dropzoneId}}" class="dropzone-container dropzone" enctype="multipart/form-data">
+    </form>
 </template>
 
 <style lang="sass">

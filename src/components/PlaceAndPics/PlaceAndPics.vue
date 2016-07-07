@@ -12,16 +12,36 @@
             }
         },
         ready: function (){
-            let vm = this
-            this.$http({
-                url: '/locations'
-            }).then((res) => {
-                res.data.locations.forEach(location => {
-                    vm.state.locations.push(location)
+            this.setupSocket()
+            this.loadLocations()
+        },
+        methods:{
+            setupSocket: function (){
+                console.log('socketed')
+                var socket = io()
+                let vm = this
+                socket.on('newimage', function (newImage){
+                    debugger
+                    let location = vm.state.locations.filter((location) => {
+                        return location._id === newImage.locationId
+                    })
+                    if(location.length === 1){
+                        location[0].images.push({date: null, src: newImage.path})
+                    }
                 })
-            }).catch((res) => {
-                alert('broke!')
-            })
+            },
+            loadLocations: function (){
+                let vm = this
+                this.$http({
+                    url: '/locations'
+                }).then((res) => {
+                    res.data.locations.forEach(location => {
+                        vm.state.locations.push(location)
+                    })
+                }).catch((res) => {
+                    alert('broke!')
+                })
+            }
         }
     }
 </script>
