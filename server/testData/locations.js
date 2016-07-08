@@ -8,6 +8,7 @@ let locations = [
                 lat: 38.545699, lng: -90.265534
             },
             images:[
+                // {src: '...', date: '...'}
             ]
         },
         {

@@ -17,7 +17,7 @@
 <style lang="sass">
     .image-container{
         img{
-            width: 300px;
+            width: 250px;
         }
     }
 </style>

@@ -21,13 +21,17 @@
                 var socket = io()
                 let vm = this
                 socket.on('newimage', function (newImage){
-                    debugger
                     let location = vm.state.locations.filter((location) => {
                         return location._id === newImage.locationId
                     })
                     if(location.length === 1){
                         location[0].images.push({date: null, src: newImage.path})
+                        vm.$dispatch('showNotification', 'info', `New image(s) added for ${location[0].name}.`)
                     }
+                })
+                socket.on('error.newimage', function (payload){
+                    debugger
+                    vm.$dispatch('showNotification', 'danger', payload.message)
                 })
             },
             loadLocations: function (){

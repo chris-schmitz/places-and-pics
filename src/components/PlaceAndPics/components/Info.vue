@@ -70,7 +70,8 @@
             }
             .dropzone-block{
                 flex: 1;
-                align-items:stretch;
+                align-items:center;
+                display:flex;
             }
         }
     }

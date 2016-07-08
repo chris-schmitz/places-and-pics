@@ -8,14 +8,14 @@ let webroot = path.resolve(__dirname, '../public')
 let multer = require('multer')
 let upload = multer({dest: 'public/images/'})
 
-app.use(express.static('public'))
-let PORT = 3000
-
-
 let MongoClient = require('mongodb').MongoClient
 let assert = require('assert')
 let url = 'mongodb://localhost:27017/placesandpics'
 let co = require('co')
+
+
+app.use(express.static('public'))
+let PORT = 3000
 
 
 app.get('/', (req,res) => {
@@ -25,7 +25,7 @@ app.get('/', (req,res) => {
 io.on('connection', (socket) => {
     console.log('Socket.io user connected')
     socket.on('newimage', function (msg){
-        io.emit('newimageadded', msg)
+        // io.emit('newimageadded', msg)
     })
 })
 
@@ -59,11 +59,23 @@ app.get('/locations', (req, res) => {
 })
 
 app.post('/images', upload.single('file'), (req, res) => {
-    // for the given location, store the image
-    // send image to gallery via socket.io
-    let path = `images/${req.file.filename}`
-    io.emit('newimage', { path: path, locationId: req.body.locationId})
-    res.json({status: 'uploaded'})
+    co(function*(){
+        let path = `images/${req.file.filename}`
+        let newImage = {src: path, date: new Date()}
+        console.log(newImage, req.body.locationId)
+
+        let db = yield MongoClient.connect(url)
+        let updated = yield db.collection('locations').update({_id: `ObjectId(${req.body.locationId})`},{"$push": {images: newImage }})
+        // assert.equal(1, updated.matchCount)
+        // assert.equal(1, update.modifiedCount)
+
+        io.emit('newimage', { path: path, locationId: req.body.locationId})
+        res.json({status: 'ok', message: 'File successfully added.'})
+    }).catch((error) => {
+        console.log(error)
+        io.emit('error.newimage', {message: 'There was an error when attempting to save the file to the location.'})
+        res.json({status: 'error'})
+    })
 })
 
 

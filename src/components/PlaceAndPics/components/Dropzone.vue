@@ -23,10 +23,20 @@
                 // thumbnailHeight: null
             })
             this.dropzone.on('sending', this.attachMetaData)
+            // this.dropzone.on('success', this.clearFile)
+        },
+        events:{
+            clearFiles: 'clearFiles'
         },
         methods:{
             attachMetaData: function (file, xhr, formData){
                 formData.append('locationId', this.location._id)
+            },
+            clearFile: function (file){
+                this.dropzone.removeFile(file)
+            },
+            clearFiles: function (){
+                this.dropzone.removeAllFiles()
             }
         }
     }
@@ -34,6 +44,7 @@
 
 <template>
     <form id="{{dropzoneId}}" class="dropzone-container dropzone" enctype="multipart/form-data">
+        <button type="button" @click="clearFiles" class="clear">Clear</button>
     </form>
 </template>
 
@@ -42,9 +53,10 @@
     @import '~dropzone/src/dropzone.scss';
 
     .dropzone-container{
-        height:100%;
+        //height:130px;
         padding: 10px;
-        overflow-y: scroll;
+        overflow-y: hidden;
+        //overflow-y: scroll;
         overflow-x: hidden;
     }
 </style>
