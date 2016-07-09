@@ -45,7 +45,6 @@
                 <gallery :location="location"></gallery>
             </div>
             <div class="dropzone-block">
-                <!-- <button class="btn btn-dark" @click="onInfoWindowButtonClick">clickme</button> -->
                 <dropzone :location="location"></dropzone>
             </div>
         </div>
@@ -61,17 +60,20 @@
 
         .content{
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             flex:1;
 
             .gallery-block{
                 flex: 2;
                 align-items:stretch;
+                background-color:green;
+                overflow-y:scroll;
             }
             .dropzone-block{
                 flex: 1;
                 align-items:center;
                 display:flex;
+                background-color:blue;
             }
         }
     }
