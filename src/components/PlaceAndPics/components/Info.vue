@@ -66,14 +66,13 @@
             .gallery-block{
                 flex: 2;
                 align-items:stretch;
-                background-color:green;
-                overflow-y:scroll;
+                overflow-y:auto;
+                margin-bottom: 10px;
             }
             .dropzone-block{
-                flex: 1;
-                align-items:center;
+                //flex: 1;
+                justify-content:center;
                 display:flex;
-                background-color:blue;
             }
         }
     }

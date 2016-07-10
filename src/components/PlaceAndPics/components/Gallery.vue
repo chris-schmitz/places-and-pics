@@ -16,15 +16,17 @@
 </template>
 
 <style lang="sass">
+    @import '../style/_variables.scss';
+
     .gallery-container{
         display:flex;
         flex-wrap: wrap;
         height:100%;
-        overlfow-y: scroll;
-        overflow-x: hidden;
+        //border: 2px solid $color1;
 
         .gallery-image{
             flex: 1;
+            margin: 8px
         }
     }
 </style>

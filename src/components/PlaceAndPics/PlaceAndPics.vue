@@ -3,9 +3,10 @@
     import Locations from './components/Locations.vue'
     import Map from './components/Map.vue'
     import state from './state/state.js'
+    import EnlargedImage from './components/EnlargedImage.vue'
 
     module.exports = {
-        components:{Locations, Map},
+        components:{Locations, Map, EnlargedImage},
         data: () => {
             return {
                 state: state
@@ -52,6 +53,7 @@
 
 <template>
     <div class="place-and-pics-container">
+        <enlarged-image></enlarged-image>
         <locations class="left-column"></locations>
         <map class="right-column"></map>
     </div>
