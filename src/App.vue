@@ -2,17 +2,19 @@
     <div class="app-container">
         <notifications></notifications>
         <place-and-pics></place-and-pics>
+        <router-view></router-view>
     </div>
 </template>
 
 <script>
-    import PlaceAndPics from "./components/PlaceAndPics/PlaceAndPics.vue"
-    import Notifications from "./components/Notifications.vue"
+    import PlaceAndPics from './components/PlaceAndPics/PlaceAndPics.vue'
+    import Notifications from './components/Notifications.vue'
+
 
     export default {
         components:{
-            PlaceAndPics,
-            Notifications
+            Notifications,
+            PlaceAndPics
         },
         events:{
             showNotification: function (...payload){
